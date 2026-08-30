@@ -25,10 +25,12 @@ public class MetasController {
 
     // começar pelo o cadastro
     @PostMapping
-    public ResponseEntity<Metas> cadastrarMetas(@RequestBody Metas novoCad) {
-        if (novoCad.getNome() == null || novoCad.getNome().isBlank()) {
-            return ResponseEntity.status(400).build();
+    public ResponseEntity<?> cadastrarMetas(@RequestBody Metas novoCad) {
+        String erroValidacao = validarCadastro(novoCad);
+        if (erroValidacao != null) {
+            return ResponseEntity.badRequest().body(erroValidacao);
         }
+
         String sql = "INSERT INTO metaScan (nome, pesoAtual, pesoObjetivo, altura, prazoMeta, observacao) VALUES (?, ?, ?, ?, ?, ?)";
         KeyHolder keyHolder = new GeneratedKeyHolder(); // eh pra guarda o id
         jdbcTemplate.update(con -> {
@@ -48,6 +50,31 @@ public class MetasController {
         novoCad.setId(idInserido);
 
         return ResponseEntity.status(201).body(novoCad);
+    }
+
+    private String validarCadastro(Metas meta) {
+        if (meta == null) {
+            return "O corpo da requisição não pode ser vazio.";
+        }
+        if (meta.getNome() == null || meta.getNome().isBlank()) {
+            return "O nome é obrigatório.";
+        }
+        if (meta.getPesoAtual() == null) {
+            return "O peso atual é obrigatório.";
+        }
+        if (meta.getPesoObjetivo() == null) {
+            return "O peso objetivo é obrigatório.";
+        }
+        if (meta.getAltura() == null) {
+            return "A altura é obrigatória.";
+        }
+        if (meta.getPrazoMeta() == null) {
+            return "O prazo da meta é obrigatório.";
+        }
+        if (meta.getObservacao() == null || meta.getObservacao().isBlank()) {
+            return "A observação é obrigatória.";
+        }
+        return null;
     }
 
 
