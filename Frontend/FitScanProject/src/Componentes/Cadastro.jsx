@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styles from "./Cadastro.module.css";
 
 function Cadastro({ onMetaCriada }) {
   const [form, setForm] = useState({

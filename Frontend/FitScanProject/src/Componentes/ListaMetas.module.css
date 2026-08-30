@@ -1,0 +1,51 @@
+.container {
+  width: 90%;
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 25px;
+  border-radius: 15px;
+    background-color: rgba(125, 74, 152, 0.75);
+  border: 2px solid #a95ac7;
+}
+
+.titulo {
+  margin: 0 0 16px;
+  color: #ff8dcc;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.mensagem,
+.erro {
+  color: white;
+  font-weight: bold;
+}
+
+.erro {
+  color: #ffd2e4;
+}
+
+.grade {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.card {
+  padding: 18px;
+  border-radius: 10px;
+  background: #f8e6f5;
+  color: #2f1b39;
+  border: 2px solid #d675b8;
+}
+
+.cardTitulo {
+  margin: 0 0 12px;
+  color: #9b3d88;
+  font-size: 20px;
+}
+
+.card p {
+  margin: 0 0 8px;
+}

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import styles from "./ListaMetas.module.css"
 
 function ListaMetas({ atualizar }) {
   const [metas, setMetas] = useState([]);
