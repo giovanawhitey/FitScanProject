@@ -22,19 +22,22 @@ public class MetasController {
     public MetasController(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
-
-    // começar pelo o cadastro
     @PostMapping
-    public ResponseEntity<?> cadastrarMetas(@RequestBody Metas novoCad) {
-        String erroValidacao = validarCadastro(novoCad);
-        if (erroValidacao != null) {
-            return ResponseEntity.badRequest().body(erroValidacao);
+    public ResponseEntity<Metas> cadastrarMetas(@RequestBody Metas novoCad) {
+        if (novoCad.getNome() == null || novoCad.getNome().isBlank()) {
+            return ResponseEntity.status(400).build();
         }
 
-        String sql = "INSERT INTO metaScan (nome, pesoAtual, pesoObjetivo, altura, prazoMeta, observacao) VALUES (?, ?, ?, ?, ?, ?)";
-        KeyHolder keyHolder = new GeneratedKeyHolder(); // eh pra guarda o id
+        String sql = "INSERT INTO metaScan " +
+                "(nome, pesoAtual, pesoObjetivo, altura, prazoMeta, observacao) " +
+                "VALUES (?, ?, ?, ?, ?, ?)";
+
+        KeyHolder keyHolder = new GeneratedKeyHolder(); // guarda o id gerado
+
         jdbcTemplate.update(con -> {
-            PreparedStatement ps = con.prepareStatement(sql,
+
+            PreparedStatement ps = con.prepareStatement(
+                    sql,
                     Statement.RETURN_GENERATED_KEYS
             );
 
@@ -44,8 +47,11 @@ public class MetasController {
             ps.setDouble(4, novoCad.getAltura());
             ps.setObject(5, novoCad.getPrazoMeta());
             ps.setString(6, novoCad.getObservacao());
+
             return ps;
+
         }, keyHolder);
+
         Integer idInserido = keyHolder.getKeyAs(Integer.class);
         novoCad.setId(idInserido);
 
