@@ -22,24 +22,18 @@ public class MetasController {
     public MetasController(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
+
     @PostMapping
     public ResponseEntity<Metas> cadastrarMetas(@RequestBody Metas novoCad) {
         if (novoCad.getNome() == null || novoCad.getNome().isBlank()) {
             return ResponseEntity.status(400).build();
         }
 
-        String sql = "INSERT INTO metaScan " +
-                "(nome, pesoAtual, pesoObjetivo, altura, prazoMeta, observacao) " +
-                "VALUES (?, ?, ?, ?, ?, ?)";
-
+        String sql = "INSERT INTO metaScan (nome, pesoAtual, pesoObjetivo, altura, prazoMeta, observacao) VALUES (?, ?, ?, ?, ?, ?)";
         KeyHolder keyHolder = new GeneratedKeyHolder(); // guarda o id gerado
 
         jdbcTemplate.update(con -> {
-
-            PreparedStatement ps = con.prepareStatement(
-                    sql,
-                    Statement.RETURN_GENERATED_KEYS
-            );
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
             ps.setString(1, novoCad.getNome());
             ps.setDouble(2, novoCad.getPesoAtual());
@@ -58,29 +52,26 @@ public class MetasController {
         return ResponseEntity.status(201).body(novoCad);
     }
 
-    private String validarCadastro(Metas meta) {
-        if (meta == null) {
-            return "O corpo da requisição não pode ser vazio.";
-        }
+    private boolean validarCadastro(Metas meta) {
         if (meta.getNome() == null || meta.getNome().isBlank()) {
-            return "O nome é obrigatório.";
+            return true;
         }
         if (meta.getPesoAtual() == null) {
-            return "O peso atual é obrigatório.";
+            return true;
         }
         if (meta.getPesoObjetivo() == null) {
-            return "O peso objetivo é obrigatório.";
+            return true;
         }
         if (meta.getAltura() == null) {
-            return "A altura é obrigatória.";
+            return true;
         }
         if (meta.getPrazoMeta() == null) {
-            return "O prazo da meta é obrigatório.";
+            return true;
         }
         if (meta.getObservacao() == null || meta.getObservacao().isBlank()) {
-            return "A observação é obrigatória.";
+            return true;
         }
-        return null;
+        return false;
     }
 
 
@@ -94,7 +85,6 @@ public class MetasController {
     @GetMapping("/{id}")
     public ResponseEntity<Metas> buscarMetaPorId(@PathVariable Integer id) {
         String sql = "SELECT * FROM metaScan WHERE id = ?";
-
         List<Metas> metas = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Metas.class), id);
         if (metas.isEmpty()) {
             return ResponseEntity.status(404).build();
