@@ -6,28 +6,28 @@ public class Metas {
     private Integer id;
     private String nome;
     private Double pesoAtual;
-    private Double pesoObjetivo;
+    private LocalDate dataNascimento;
     private Double altura;
-    private LocalDate prazoMeta;
-    private String observacao;
+    private String objetivo;
+    private Double imc;
+    private String classificacao;
+    private String sugestao;
+
 
     public Metas() {
     }
 
-    public Metas(Integer id, String nome, Double pesoAtual, Double pesoObjetivo, Double altura, LocalDate prazoMeta, String observacao) {
+    public Metas(Integer id, String nome, Double pesoAtual, LocalDate dataNascimento, Double altura, String objetivo, Double imc, String classificacao, String sugestao) {
         this.id = id;
         this.nome = nome;
         this.pesoAtual = pesoAtual;
-        this.pesoObjetivo = pesoObjetivo;
+        this.dataNascimento = dataNascimento;
         this.altura = altura;
-        this.prazoMeta = prazoMeta;
-        this.observacao = observacao;
+        this.objetivo = objetivo;
+        this.imc = imc;
+        this.classificacao = classificacao;
+        this.sugestao = sugestao;
     }
-
-
-
-
-
 
     public Integer getId() {
         return id;
@@ -53,14 +53,6 @@ public class Metas {
         this.pesoAtual = pesoAtual;
     }
 
-    public Double getPesoObjetivo() {
-        return pesoObjetivo;
-    }
-
-    public void setPesoObjetivo(Double pesoObjetivo) {
-        this.pesoObjetivo = pesoObjetivo;
-    }
-
     public Double getAltura() {
         return altura;
     }
@@ -69,21 +61,46 @@ public class Metas {
         this.altura = altura;
     }
 
-    public LocalDate getPrazoMeta() {
-        return prazoMeta;
+    public String getObjetivo() {
+        return objetivo;
     }
 
-    public void setPrazoMeta(LocalDate prazoMeta) {
-        this.prazoMeta = prazoMeta;
+    public void setObjetivo(String objetivo) {
+        this.objetivo = objetivo;
     }
 
-    public String getObservacao() {
-        return observacao;
+    public Double getImc() {
+        return imc;
     }
 
-    public void setObservacao(String observacao) {
-        this.observacao = observacao;
+    public void setImc(Double imc) {
+        this.imc = imc;
     }
+
+    public String getClassificacao() {
+        return classificacao;
+    }
+
+    public void setClassificacao(String classificacao) {
+        this.classificacao = classificacao;
+    }
+
+    public String getSugestao() {
+        return sugestao;
+    }
+
+    public void setSugestao(String sugestao) {
+        this.sugestao = sugestao;
+    }
+
+    public LocalDate getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(LocalDate dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
 
     @Override
     public String toString() {
@@ -91,10 +108,12 @@ public class Metas {
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 ", pesoAtual=" + pesoAtual +
-                ", pesoObjetivo=" + pesoObjetivo +
+                ", dataNascimento=" + dataNascimento +
                 ", altura=" + altura +
-                ", prazoMeta=" + prazoMeta +
-                ", observacao='" + observacao + '\'' +
+                ", objetivo='" + objetivo + '\'' +
+                ", imc=" + imc +
+                ", classificacao='" + classificacao + '\'' +
+                ", sugestao='" + sugestao + '\'' +
                 '}';
     }
 }

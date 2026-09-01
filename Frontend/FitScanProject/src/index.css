@@ -5,18 +5,16 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-image: url('/fitscan-background.png');
+  background-image: url("./assets/fundo.png");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
 }
 
 #root {
-  width: 90%;
-  max-width: 1200px;
+  width: 100%;
   min-height: 100vh;
-  margin: auto;
-  padding: 1px 0;
+  margin: 0;
 }
 
 h1,

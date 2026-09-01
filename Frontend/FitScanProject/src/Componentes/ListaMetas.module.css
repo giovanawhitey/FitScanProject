@@ -1,23 +1,23 @@
 .container {
-  width: 90%;
-  max-width: 900px;
-  margin: 30px auto;
+   width: 500px;
+  margin: 25px 0;
   padding: 25px;
-  border-radius: 15px;
-    background-color: rgba(125, 74, 152, 0.75);
   border: 2px solid #a95ac7;
+  border-radius: 15px;
+  background-color: rgba(255, 200, 240, 0.9);
 }
 
 .titulo {
   margin: 0 0 16px;
-  color: #ff8dcc;
+    color: #fc2f9f;
+
   font-size: 28px;
   font-weight: bold;
 }
 
 .mensagem,
 .erro {
-  color: white;
+  color: rgb(0, 0, 0);
   font-weight: bold;
 }
 
