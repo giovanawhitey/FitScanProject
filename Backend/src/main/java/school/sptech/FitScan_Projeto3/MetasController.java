@@ -130,10 +130,10 @@ public class MetasController {
         }
 
         String sql = """
-            INSERT INTO metaScan
-            (nome, dataNascimento, pesoAtual, altura, objetivo)
-            VALUES (?, ?, ?, ?, ?)
-            """;
+        INSERT INTO metaScan
+        (nome, dataNascimento, pesoAtual, altura, objetivo)
+        VALUES (?, ?, ?, ?, ?)
+        """;
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
 
@@ -154,11 +154,10 @@ public class MetasController {
 
         }, keyHolder);
 
-        Integer idInserido = keyHolder.getKeyAs(Integer.class);
+        Number idGerado = keyHolder.getKey();
+        Integer idInserido = idGerado.intValue();
 
         novoCad.setId(idInserido);
-
-        calcularDados(novoCad);
 
         return ResponseEntity.status(201).body(novoCad);
     }

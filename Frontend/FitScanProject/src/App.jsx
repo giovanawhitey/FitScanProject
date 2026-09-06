@@ -2,6 +2,7 @@ import { useState } from "react";
 import Cadastro from "./Componentes/Cadastro";
 import ListaMetas from "./Componentes/ListaMetas";
 import Navbar from "./Componentes/Navbar";
+import Informacoes from "./Componentes/Informacoes";
 
 export default function App() {
   const [atualizarLista, setAtualizarLista] = useState(0);
@@ -23,6 +24,7 @@ export default function App() {
           padding: "30px",
         }}
       >
+        <Informacoes />
         <Cadastro onMetaCriada={recarregarLista} />
 
         <ListaMetas atualizar={atualizarLista} />
