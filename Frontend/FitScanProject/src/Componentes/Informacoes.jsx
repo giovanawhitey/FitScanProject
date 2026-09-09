@@ -8,25 +8,25 @@ function Informacoes() {
       </h2>
 
       <p className={styles.texto}>
-        O FitScan é uma ferramenta de acompanhamento que
-        utiliza informações como peso, altura e objetivo
-        para ajudar você a acompanhar seus resultados.
+        O FitScan ajuda você a acompanhar seus dados de forma simples e
+        prática. Informe seu peso, altura e objetivo para conhecer melhor
+        seus resultados e acompanhar sua evolução.
       </p>
 
       <div className={styles.divisor}></div>
 
       <h3 className={styles.subtitulo}>
-        📊 O que é o IMC?
+        O que é o IMC?
       </h3>
 
       <p className={styles.texto}>
-        IMC significa Índice de Massa Corporal. É um cálculo
-        que relaciona o peso de uma pessoa com sua altura
-        para indicar uma faixa de classificação do peso.
+        O IMC, ou Índice de Massa Corporal, é uma medida utilizada para
+        relacionar o peso e a altura de uma pessoa. Ele ajuda a identificar
+        uma faixa de peso e oferece uma referência para acompanhar seus dados.
       </p>
 
       <h3 className={styles.subtitulo}>
-        🧮 Como ele é calculado?
+        Como ele é calculado?
       </h3>
 
       <div className={styles.formula}>
@@ -34,8 +34,8 @@ function Informacoes() {
       </div>
 
       <p className={styles.observacao}>
-        O IMC é um indicador baseado nesse cálculo e não
-        representa, sozinho, uma avaliação completa da saúde.
+        O IMC é apenas uma referência e deve ser interpretado junto a outros
+        fatores. Ele não representa, sozinho, uma avaliação completa da saúde.
       </p>
     </section>
   );

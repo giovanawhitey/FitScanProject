@@ -9,6 +9,9 @@ function Navbar() {
         alt="Logo FitScan"
         className={styles.logo}
       />
+      <span className={styles.cadastro}>
+        Central de Cadastro
+      </span>
     </nav>
   );
 }

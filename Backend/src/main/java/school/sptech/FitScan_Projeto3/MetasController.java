@@ -30,55 +30,55 @@ public class MetasController {
 
     private String classificarImc(Double imc) {
 
+
         if (imc < 18.5) {
-            return "Abaixo do peso";
+            return "Abaixo da faixa recomendada";
 
         } else if (imc < 25) {
-            return "Peso adequado";
+            return "Dentro da faixa saudável";
 
         } else if (imc < 30) {
-            return "Sobrepeso";
+            return "Acima da faixa recomendada";
 
         } else {
-            return "Obesidade";
+            return "Acima da faixa saudável";
         }
     }
 
 
     private String gerarSugestao(Double imc, String objetivo) {
-
         if (objetivo.equalsIgnoreCase("EMAGRECER")) {
 
             if (imc < 18.5) {
-                return "Seu IMC indica abaixo do peso. Emagrecer pode não ser o objetivo mais indicado no momento.";
+                return "Seu IMC está abaixo da faixa recomendada. Antes de buscar o emagrecimento, vale priorizar uma alimentação equilibrada e o cuidado com a saúde.";
 
             } else if (imc < 25) {
-                return "Seu IMC está em uma faixa saudável. Se ainda deseja emagrecer, faça isso de forma leve e priorize alimentação equilibrada e exercícios.";
+                return "Seu IMC está dentro de uma faixa saudável. Se o objetivo é emagrecer, procure fazer mudanças leves na alimentação e manter uma rotina de atividades físicas.";
 
             } else if (imc < 30) {
-                return "Seu IMC indica sobrepeso. O objetivo de emagrecimento pode ser adequado. Priorize alimentação equilibrada, déficit calórico moderado e atividade física.";
+                return "Seu IMC está acima da faixa recomendada. Uma alimentação equilibrada e uma rotina de exercícios podem ajudar você a alcançar seu objetivo de forma gradual.";
 
             } else {
-                return "Seu IMC está na faixa de obesidade. O emagrecimento pode trazer benefícios. Procure reduzir calorias de forma gradual e manter uma rotina de exercícios.";
+                return "Seu IMC está acima da faixa saudável. Pequenas mudanças na alimentação e na rotina podem contribuir para uma evolução gradual e saudável.";
             }
 
         } else if (objetivo.equalsIgnoreCase("GANHAR_MASSA")) {
 
             if (imc < 18.5) {
-                return "Seu IMC indica abaixo do peso. O ganho de massa pode ser um bom objetivo. Priorize alimentação suficiente, proteínas e exercícios de força.";
+                return "Seu IMC está abaixo da faixa recomendada. Para ganhar massa muscular, priorize uma alimentação adequada, boas fontes de proteína e exercícios de força.";
 
             } else if (imc < 25) {
-                return "Seu IMC está em uma faixa saudável. Para ganhar massa muscular, priorize treino de força, consumo adequado de proteínas e leve aumento de calorias.";
+                return "Seu IMC está dentro de uma faixa saudável. Para ganhar massa muscular, combine exercícios de força com uma alimentação equilibrada e boas fontes de proteína.";
 
             } else if (imc < 30) {
-                return "Seu IMC indica sobrepeso. Você pode ganhar massa muscular, mas é interessante equilibrar o ganho de músculo com o controle da gordura corporal.";
+                return "Seu IMC está acima da faixa recomendada. É possível trabalhar o ganho de massa muscular enquanto mantém uma alimentação equilibrada e cuida da composição corporal.";
 
             } else {
-                return "Seu IMC está na faixa de obesidade. O foco pode ser melhorar a composição corporal, combinando musculação com alimentação equilibrada.";
+                return "Seu IMC está acima da faixa saudável. Uma rotina de exercícios de força e uma alimentação equilibrada podem ajudar na evolução da sua composição corporal.";
             }
         }
 
-        return "Objetivo inválido.";
+        return "Não foi possível identificar o objetivo informado.";
     }
 
 
@@ -192,7 +192,7 @@ public class MetasController {
     @GetMapping
     public ResponseEntity<List<Metas>> listarMetas() {
 
-        String sql = "SELECT * FROM metaScan";
+        String sql = "SELECT * FROM metaScan ORDER BY id DESC";
 
         List<Metas> metas = jdbcTemplate.query(
                 sql,

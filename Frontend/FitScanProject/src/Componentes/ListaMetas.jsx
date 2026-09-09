@@ -34,27 +34,15 @@ function ListaMetas({ atualizar }) {
 
   function mostrarMensagem() {
     if (carregando) {
-      return (
-        <p className={styles.mensagem}>
-          Carregando metas...
-        </p>
-      );
+      return <p className={styles.mensagem}>Carregando metas...</p>;
     }
 
     if (erro) {
-      return (
-        <p className={styles.erro}>
-          {erro}
-        </p>
-      );
+      return <p className={styles.erro}>{erro}</p>;
     }
 
     if (metas.length === 0) {
-      return (
-        <p className={styles.mensagem}>
-          Nenhuma meta cadastrada ainda.
-        </p>
-      );
+      return <p className={styles.mensagem}>Nenhuma meta cadastrada ainda.</p>;
     }
 
     return null;
@@ -92,50 +80,42 @@ function ListaMetas({ atualizar }) {
 
   return (
     <section className={styles.container}>
-      <h2 className={styles.titulo}>
-        Metas cadastradas
-      </h2>
+      <h2 className={styles.titulo}>Metas cadastradas</h2>
 
       {mostrarMensagem()}
 
       <div className={styles.grade}>
         {metas.map((meta) => (
-          <div
-            key={meta.id}
-            className={styles.card}
-          >
-            <h3 className={styles.cardTitulo}>
-              {meta.nome}
-            </h3>
+          <div key={meta.id} className={styles.card}>
+            <h3 className={styles.cardTitulo}>{meta.nome}</h3>
 
             <p>
-              Data de nascimento: {meta.dataNascimento}
+              <b>Data de nascimento: </b>
+              {meta.dataNascimento}
             </p>
 
             <p>
-              Peso atual: {meta.pesoAtual} kg
+              <b>Peso atual: </b>
+              {meta.pesoAtual} kg
             </p>
 
             <p>
-              Altura: {meta.altura} m
+              <b>Altura: </b> {meta.altura}
             </p>
 
             <p>
-              Objetivo: {meta.objetivo}
+              <b>Objetivo: </b>{" "}
+              {meta.objetivo === "GANHAR_MASSA" ? "Ganhar Massa" : "Emagrecer"}
             </p>
 
             <div className={styles.imcBox}>
-              <span className={styles.imcLabel}>
-                Seu IMC é: <br />
-              </span>
+              <div className={styles.imcTitulo}>
+                <b>Seu IMC é:</b> {formatarIMC(meta.imc)}
+              </div>
 
-              <span className={styles.imcValor}>
-                {formatarIMC(meta.imc)}
-              </span>
-
-              <span className={styles.imcDescricao}>
-                  <br />Resultado calculado com base no seu peso e altura
-              </span>
+              <p className={styles.imcDescricao}>
+                Este resultado é calculado com base no seu peso e altura.
+              </p>
 
               <p className={styles.classificacao}>
                 {formatarClassificacao(meta.classificacao)}
@@ -143,13 +123,9 @@ function ListaMetas({ atualizar }) {
             </div>
 
             <div className={styles.sugestao}>
-              <p className={styles.sugestaoTitulo}>
-               <b> Sugestão para você:</b>
-              </p>
+              <h4 className={styles.sugestaoTitulo}>Sugestão para você:</h4>
 
-              <p>
-                {meta.sugestao}
-              </p>
+              <p className={styles.sugestaoTexto}>{meta.sugestao}</p>
             </div>
           </div>
         ))}

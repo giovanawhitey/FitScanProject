@@ -53,14 +53,13 @@ function Cadastro({ onMetaCriada }) {
 
     console.log("STATUS:", resposta.status);
 
-    if (!resposta.ok) {
-      const erroBack = await resposta.text();
+   if (!resposta.ok) {
+  const erroBack = await resposta.text();
 
-      console.log("ERRO DO BACK:", erroBack);
+  setMensagem(erroBack);
 
-      setMensagem("Erro " + resposta.status);
-      return;
-    }
+  return;
+}
 
     const dados = await resposta.json();
 

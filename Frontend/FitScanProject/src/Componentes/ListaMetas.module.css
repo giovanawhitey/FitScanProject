@@ -1,51 +1,138 @@
 .container {
-   width: 500px;
+  width: 500px;
   margin: 25px 0;
   padding: 25px;
   border: 2px solid #a95ac7;
   border-radius: 15px;
   background-color: rgba(255, 200, 240, 0.9);
+  box-sizing: border-box;
 }
 
 .titulo {
   margin: 0 0 16px;
-    color: #fc2f9f;
-
+  color: #fc2f9f;
   font-size: 28px;
   font-weight: bold;
 }
 
-.mensagem,
-.erro {
-  color: rgb(0, 0, 0);
+.mensagem {
+  color: #000;
   font-weight: bold;
 }
 
 .erro {
-  color: #ffd2e4;
+  color: #d63384;
+  font-weight: bold;
 }
 
 .grade {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: 1fr;
   gap: 16px;
   margin-top: 18px;
 }
 
 .card {
   padding: 18px;
-  border-radius: 10px;
+  border-radius: 12px;
   background: #f8e6f5;
   color: #2f1b39;
   border: 2px solid #d675b8;
+  box-sizing: border-box;
 }
 
 .cardTitulo {
-  margin: 0 0 12px;
+  margin: 0 0 16px;
   color: #9b3d88;
   font-size: 20px;
 }
 
 .card p {
-  margin: 0 0 8px;
+  margin: 0 0 10px;
+  line-height: 1.5;
+}
+
+.imcBox {
+  margin-top: 18px;
+  padding: 15px;
+  background-color: #fff7fc;
+  border: 2px solid #e79bce;
+  border-radius: 14px;
+}
+
+.imcTitulo {
+  margin: 0 0 14px;
+  color: #8f3d7e;
+  font-size: 18px;
+}
+
+.imcTitulo b {
+  margin-left: 6px;
+  color: #d94fac;
+  font-size: 20px;
+}
+
+.imcDescricao {
+  margin: 0 0 10px;
+  color: #72506b;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.classificacao {
+  margin: 0;
+  padding: 8px 10px;
+  background-color: #f4d3e9;
+  border-radius: 8px;
+  color: #914477;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+
+.sugestao {
+  margin-top: 18px;
+  padding: 15px;
+  background-color: #fdf0f9;
+  border: 2px solid #e7b0d7;
+  border-radius: 14px;
+}
+
+.sugestaoTitulo {
+  margin: 0 0 10px;
+  color: #963f82;
+  font-size: 17px;
+}
+
+.sugestaoTexto {
+  margin: 0;
+  color: #292033;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+
+
+
+@media (max-width: 600px) {
+  .container {
+    width: 100%;
+    padding: 18px;
+  }
+
+  .titulo {
+    font-size: 24px;
+  }
+
+  .card {
+    padding: 15px;
+  }
+
+  .imcBox {
+    padding: 14px;
+  }
+
+  .sugestao {
+    padding: 14px;
+  }
 }

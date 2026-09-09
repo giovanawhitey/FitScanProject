@@ -79,3 +79,9 @@ h1, h2 {
     grid-template-columns: 1fr;
   }
 }
+
+@media (max-width: 600px) {
+  .grade {
+    grid-template-columns: 1fr;
+  }
+}

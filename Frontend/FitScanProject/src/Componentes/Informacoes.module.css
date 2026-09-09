@@ -53,3 +53,20 @@
   line-height: 1.4;
   opacity: 0.7;
 }
+
+@media (max-width: 600px) {
+  .container {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 18px;
+  }
+
+  .titulo {
+    font-size: 22px;
+  }
+
+  .texto {
+    font-size: 13px;
+  }
+}
+
