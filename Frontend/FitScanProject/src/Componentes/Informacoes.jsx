@@ -8,9 +8,7 @@ function Informacoes() {
       </h2>
 
       <p className={styles.texto}>
-        O FitScan ajuda você a acompanhar seus dados de forma simples e
-        prática. Informe seu peso, altura e objetivo para conhecer melhor
-        seus resultados e acompanhar sua evolução.
+       O FitScan ajuda a acompanhar os dados e objetivos dos alunos de forma simples e prática. Com informações como peso, altura e objetivo, é possível acompanhar os resultados e a evolução de cada aluno.
       </p>
 
       <div className={styles.divisor}></div>

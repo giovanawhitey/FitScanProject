@@ -10,7 +10,7 @@ function Navbar() {
         className={styles.logo}
       />
       <span className={styles.cadastro}>
-        Central de Cadastro
+        FitScan — Área dos Alunos
       </span>
     </nav>
   );
