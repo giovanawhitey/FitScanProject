@@ -47,34 +47,35 @@ public class MetasController {
 
 
     private String gerarSugestao(Double imc, String objetivo) {
+
         if (objetivo.equalsIgnoreCase("EMAGRECER")) {
 
             if (imc < 18.5) {
-                return "Seu IMC está abaixo da faixa recomendada. Antes de buscar o emagrecimento, vale priorizar uma alimentação equilibrada e o cuidado com a saúde.";
+                return "Seu IMC está abaixo da faixa recomendada. Antes de buscar o emagrecimento, priorize uma alimentação equilibrada e procure orientação profissional para definir o melhor caminho.";
 
             } else if (imc < 25) {
-                return "Seu IMC está dentro de uma faixa saudável. Se o objetivo é emagrecer, procure fazer mudanças leves na alimentação e manter uma rotina de atividades físicas.";
+                return "Seu IMC está dentro de uma faixa saudável. Para emagrecer, mantenha uma alimentação equilibrada, pratique atividades físicas regularmente e acompanhe sua evolução.";
 
             } else if (imc < 30) {
-                return "Seu IMC está acima da faixa recomendada. Uma alimentação equilibrada e uma rotina de exercícios podem ajudar você a alcançar seu objetivo de forma gradual.";
+                return "Seu IMC está acima da faixa recomendada. Para buscar o emagrecimento, procure manter uma alimentação equilibrada, praticar atividades físicas e acompanhar sua evolução de forma gradual.";
 
             } else {
-                return "Seu IMC está acima da faixa saudável. Pequenas mudanças na alimentação e na rotina podem contribuir para uma evolução gradual e saudável.";
+                return "Seu IMC está acima da faixa saudável. Para buscar o emagrecimento, priorize hábitos alimentares equilibrados, pratique atividades físicas regularmente e considere buscar orientação profissional.";
             }
 
         } else if (objetivo.equalsIgnoreCase("GANHAR_MASSA")) {
 
             if (imc < 18.5) {
-                return "Seu IMC está abaixo da faixa recomendada. Para ganhar massa muscular, priorize uma alimentação adequada, boas fontes de proteína e exercícios de força.";
+                return "Seu IMC está abaixo da faixa recomendada. Para ganhar massa muscular, combine exercícios de força com uma alimentação equilibrada e adequada às suas necessidades.";
 
             } else if (imc < 25) {
-                return "Seu IMC está dentro de uma faixa saudável. Para ganhar massa muscular, combine exercícios de força com uma alimentação equilibrada e boas fontes de proteína.";
+                return "Seu IMC está dentro de uma faixa saudável. Para ganhar massa muscular, pratique exercícios de força regularmente, mantenha uma alimentação equilibrada e consuma boas fontes de proteína.";
 
             } else if (imc < 30) {
-                return "Seu IMC está acima da faixa recomendada. É possível trabalhar o ganho de massa muscular enquanto mantém uma alimentação equilibrada e cuida da composição corporal.";
+                return "Seu IMC está acima da faixa recomendada. Para ganhar massa muscular, priorize exercícios de força, alimentação equilibrada e acompanhamento da evolução da sua composição corporal.";
 
             } else {
-                return "Seu IMC está acima da faixa saudável. Uma rotina de exercícios de força e uma alimentação equilibrada podem ajudar na evolução da sua composição corporal.";
+                return "Seu IMC está acima da faixa saudável. Para trabalhar o ganho de massa muscular, pratique exercícios de força e mantenha uma alimentação equilibrada, buscando orientação profissional quando necessário.";
             }
         }
 
@@ -129,6 +130,11 @@ public class MetasController {
             return ResponseEntity.status(400).body("Objetivo inválido");
         }
 
+        if (!novoCad.getObjetivo().equalsIgnoreCase("EMAGRECER")
+                && !novoCad.getObjetivo().equalsIgnoreCase("GANHAR_MASSA")) {
+            return ResponseEntity.status(400).body("Objetivo inválido");
+        }
+
         String sql = """
         INSERT INTO metaScan
         (nome, dataNascimento, pesoAtual, altura, objetivo)
@@ -163,30 +169,7 @@ public class MetasController {
     }
 
 
-    private boolean validarCadastro(Metas meta) {
 
-        if (meta.getNome() == null || meta.getNome().isBlank()) {
-            return true;
-        }
-
-        if (meta.getDataNascimento() == null) {
-            return true;
-        }
-
-        if (meta.getPesoAtual() == null || meta.getPesoAtual() <= 0) {
-            return true;
-        }
-
-        if (meta.getAltura() == null || meta.getAltura() <= 0) {
-            return true;
-        }
-
-        if (meta.getObjetivo() == null || meta.getObjetivo().isBlank()) {
-            return true;
-        }
-
-        return false;
-    }
 
 
     @GetMapping

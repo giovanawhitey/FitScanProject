@@ -31,10 +31,7 @@ function Informacoes() {
         IMC = peso ÷ (altura × altura)
       </div>
 
-      <p className={styles.observacao}>
-        O IMC é apenas uma referência e deve ser interpretado junto a outros
-        fatores. Ele não representa, sozinho, uma avaliação completa da saúde.
-      </p>
+      <p className={styles.observacao}> A classificação apresentada pelo FitScan é baseada no cálculo do IMC e serve apenas como referência. Para obter uma avaliação mais completa e orientações de acordo com suas necessidades, procure um profissional qualificado. </p>
     </section>
   );
 }
